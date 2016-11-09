@@ -1,0 +1,47 @@
+ol .slides {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding: 0;
+  width: 90%;
+  height: 550px;
+}
+.carousel {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
+.carousel li {
+  position: absolute;
+  display: inline-block;
+  top: 10000px;
+}
+li.active {
+  position: relative;
+  top: 0px;
+}
+figure {
+  overflow: hidden;
+  float: left;
+  display: inline-block;
+  margin: 10px;
+  width: auto;
+  max-width: 400px;
+  height: 400px;
+}
+.active::before {
+
+}
+
+.active::after {
+
+}
+.previous, .next {
+  position: relative;
+  width: 25px;
+  height: 50px;
+  top: 50%;
+  z-index: 10;
+}
