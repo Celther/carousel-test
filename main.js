@@ -42,8 +42,8 @@ var navigation = (function() {
   var slides = slider.querySelectorAll('.slides li');
   var numSlides = slides.length;
   var index = 0;
-  var currrent = slides[0];
-  function navigate(direction) {
+  var current = slides[0];
+  var navigate = function navigate(direction) {
     current.classList.remove('active');
     index = index + direction;
     if (direction === -1 && index < 0) {
@@ -54,7 +54,7 @@ var navigation = (function() {
     }
     current = slides[index];
     current.classList.add('active');
-  }
+  };
   next.addEventListener('click', function(ev) {
     navigate(1);
   });
