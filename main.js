@@ -16,27 +16,26 @@ let gallery = [
   }
 ];
 
-// function createSlides(array) {
-//   for (var i=0, i < array.length, i++) {
-//     const container = document.querySelector('.carousel');
-//     const `div-${i}` = document.createElement('div');
-//     const newDiv = container.appendChild(`div-${i}`)
-//     const heading = newDiv.appendChild('h2');
-//     const img1 = newDiv.appendChild('img');
-//     const img2 = newDiv.appendChild('img');
-//     if i === 0 {
-//       newDiv.className = `slide-${i} active`;
-//     } else {
-//       newDiv.className = `slide-${i}`;
-//     }
-//     img1.src = array[i].beforeImage.url || "";
-//     img2.src = array[i].afterImage.url || "";
-//   }
-// }
+function createSlides(array) {
+  for (var i=0; i < array.length; i++) {
+    const container = document.querySelector('.carousel');
+    const `div-${i}` = document.createElement('div');
+    const newDiv = container.appendChild(`div-${i}`)
+    const heading = newDiv.appendChild('h2');
+    const img1 = newDiv.appendChild('img');
+    const img2 = newDiv.appendChild('img');
+    if i === 0 {
+      newDiv.className = `slide-${i} active`;
+    } else {
+      newDiv.className = `slide-${i}`;
+    }
+    img1.src = array[i].beforeImage.url || "";
+    img2.src = array[i].afterImage.url || "";
+  }
+}
 
-carousel = (function(){
+carousel = (function() {
   var carousel = document.querySelector('.carousel');
-  var
   var previous = carousel.querySelector('.previous');
   var next = carousel.querySelector('.next');
   var slides = carousel.querySelectorAll('.slides li');
