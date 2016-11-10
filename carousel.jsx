@@ -22,3 +22,6 @@ class Carousel extends Component {
   }
 
 }
+
+<figure><img src="/Users/mwfister/Documents/Development/carousel-test/images/emma-stone.jpg" alt="Before"></img></figure>
+<figure><img src="/Users/mwfister/Documents/Development/carousel-test/images/dos.jpg" alt="After"></img></figure>

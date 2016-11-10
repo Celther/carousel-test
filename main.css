@@ -31,13 +31,6 @@ figure {
   max-width: 400px;
   height: 400px;
 }
-.active::before {
-
-}
-
-.active::after {
-
-}
 .previous, .next {
   position: relative;
   width: 25px;
