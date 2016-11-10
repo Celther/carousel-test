@@ -1,40 +1,56 @@
-ol .slides {
-  list-style-type: none;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  padding: 0;
-  width: 90%;
-  height: 550px;
-}
-.carousel {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  text-align: center;
-}
-.carousel li {
-  position: absolute;
-  display: inline-block;
-  top: 10000px;
-}
-li.active {
-  position: relative;
-  top: 0px;
-}
 figure {
   overflow: hidden;
   float: left;
   display: inline-block;
-  margin: 10px;
+  margin: 5px;
   width: auto;
   max-width: 400px;
-  height: 400px;
+  height: 350px;
+}
+.super-container {
+  text-align: center;
+}
+.carousel {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  width: 860px;
+  margin: 0 auto;
+}
+.slider {
+  position: relative;
+  display: inline-block;
+}
+.carousel li {
+  position: absolute;
+  left: 10000px;
+}
+li.active {
+  position: relative;
+  left: 0px;
+  transform: translateX(0);
+  transition: 0.5s;
 }
 .previous, .next {
-  position: relative;
+  position: absolute;
   width: 25px;
-  height: 50px;
+  height: 30%;
   top: 50%;
-  z-index: 10;
+  z-index: 5;
+}
+.next {
+  right: 0px;
+}
+.left {
+  transform: translateX(-50%);
+  transition-duration: 0.5s;
+}
+ol.slides {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding: 0 20px;
+  margin: 0 0 10px 0;
 }

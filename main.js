@@ -45,6 +45,7 @@ var navigation = (function() {
   var current = slides[0];
   var navigate = function navigate(direction) {
     current.classList.remove('active');
+    current.classList.add('left');
     index = index + direction;
     if (direction === -1 && index < 0) {
       index = numSlides - 1;
