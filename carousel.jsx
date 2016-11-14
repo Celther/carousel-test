@@ -21,6 +21,17 @@ class Carousel extends Component {
     )
   }
 
+  li.left {
+    left: -1500px;
+    transform-origin: -1500px;
+    transition-duration: 1s;
+  }
+  li.right {
+
+    transform-origin: 1500px;
+    transition-duration: 1s;
+  }
+
 }<figure><img src="C:\Users\Marc\Documents\Development\carousel\images\emma-stone.jpg" alt="Before"></img></figure>
 <figure><img src="C:\Users\Marc\Documents\Development\carousel\images\dos.jpg" alt="After"></img></figure>
 

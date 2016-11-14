@@ -43,9 +43,8 @@ var navigation = (function() {
   var numSlides = slides.length;
   var index = 0;
   var current = slides[0];
+  var nextSlide = slides[0];
   var navigate = function navigate(direction) {
-    current.classList.remove('active');
-    current.classList.add('left');
     index = index + direction;
     if (direction === -1 && index < 0) {
       index = numSlides - 1;
@@ -53,7 +52,21 @@ var navigation = (function() {
     if (direction === 1 && !slides[index]) {
       index = 0;
     }
-    current = slides[index];
+    nextSlide = slides[index];
+    if (direction === -1) {
+      current.classList.remove('active', 'right', 'left');
+
+      nextSlide.classList.remove('left');
+      nextSlide.classList.add('right');
+      current = nextSlide;
+    }
+    if (direction === 1) {
+      current.classList.remove('active', 'right', 'left');
+
+      nextSlide.classList.remove('right');
+      nextSlide.classList.add('left');
+      current = nextSlide;
+    }
     current.classList.add('active');
   };
   next.addEventListener('click', function(ev) {

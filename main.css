@@ -24,14 +24,26 @@ figure {
 }
 .carousel li {
   position: absolute;
-  left: 10000px;
+  left: 1500px;
 }
 li.active {
   position: relative;
   left: 0px;
-  transform: translateX(0);
-  transition: 0.5s;
+  animation-name: slide-in;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
+li.left {
+  animation-name: slide-left;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+li.right {
+  animation-name: slide-right;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
 .previous, .next {
   position: absolute;
   width: 25px;
@@ -42,10 +54,6 @@ li.active {
 .next {
   right: 0px;
 }
-.left {
-  transform: translateX(-50%);
-  transition-duration: 0.5s;
-}
 ol.slides {
   list-style-type: none;
   display: inline-block;
@@ -53,4 +61,15 @@ ol.slides {
   text-align: center;
   padding: 0 20px;
   margin: 0 0 10px 0;
+}
+@keyframes slide-in {
+  100% { transform: translateX(0%); }
+}
+@keyframes slide-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes slide-right {
+  0% { transform: translate(0%); }
+  100% { transform: translate(100%); }
 }
