@@ -38,6 +38,8 @@ var activeLink = 0;
 //Dynamically create the slides
 function createSlides(array) {
   for (var i=0; i < array.length; i++) {
+    // From the CSS Property #viewport
+    var slideWidth = 1040;
     newSlide = document.createElement('div');
     newCaptions = document.createElement('div');
     newH2 = document.createElement('h2');
@@ -46,6 +48,7 @@ function createSlides(array) {
     subheading = document.createTextNode(array[i].subheading);
     beforeFigure = document.createElement('figure');
     afterFigure = document.createElement('figure');
+    wrapper.style.width = (slideWidth * array.length) + "px";
     wrapper.appendChild(newSlide);
     newSlide.setAttribute('id', ('item-' + (i + 1)));
     newSlide.classList.add('slide');
