@@ -13,7 +13,7 @@ let gallery = [
   },
   {
     heading: "Treatment 2",
-    subheading: "After Y Peels".
+    subheading: "After Y Peels",
     beforeImage: {
       url: "images/face9.jpg",
       issue: "acne"
@@ -35,24 +35,9 @@ var nextButton = document.querySelector('.next');
 // the activeLink provides a pointer to the currently displayed item
 var activeLink = 0;
 
-// setup the event listeners
-for (var i = 0; i < links.length; i++) {
-    var link = links[i];
-    link.addEventListener('click', setClickedItem, false);
-
-    // identify the item for the activeLink
-    link.itemID = i;
-}
-previousButton.addEventListener('click', function(ev) {
-  navigate(-1);
-})
-nextButton.addEventListener('click', function(ev) {
-  navigate(1);
-})
-
 //Dynamically create the slides
 function createSlides(array) {
-  for (var i=0, i < array.length, i++) {
+  for (var i=0; i < array.length; i++) {
     newSlide = document.createElement('div');
     newCaptions = document.createElement('div');
     newH2 = document.createElement('h2');
@@ -76,9 +61,25 @@ function createSlides(array) {
     newSlide.appendChild(afterFigure);
     afterFigure.style.backgroundImage = "url(" + array[i].afterImage.url + ")";
     afterFigure.classList.add('after-image');
-    window[links] = document.querySelectorAll(".itemLinks");
+    slides = document.querySelectorAll(".slide");
   }
 }
+createSlides(gallery);
+
+// setup the event listeners
+for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    link.addEventListener('click', setClickedItem, false);
+
+    // identify the item for the activeLink
+    link.itemID = i;
+}
+previousButton.addEventListener('click', function(ev) {
+  navigate(-1);
+})
+nextButton.addEventListener('click', function(ev) {
+  navigate(1);
+})
 
 // set first item as active
 links[activeLink].classList.add("active");
@@ -93,7 +94,7 @@ function setClickedItem(e) {
 }
 
 function removeActiveLinks() {
-    for (var i = 0; i < links.length; i++) {
+    for (var i = 0; i < gallery.length; i++) {
         links[i].classList.remove("active");
     }
 }
@@ -109,7 +110,7 @@ function changePosition(link, id) {
 }
 
 function navigate(direction) {
-  var numSlides = slides.length;
+  var numSlides = gallery.length;
   activeLink = activeLink + direction;
   if (direction === -1 && activeLink < 0) {
     activeLink = numSlides - 1;

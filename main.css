@@ -38,18 +38,6 @@
 .captions {
   text-align: center;
 }
-#item-one .before-image {
-  background-image: url("images/emma-stone.jpg");
-}
-#item-one .after-image {
-  background-image: url("images/dos.jpg");
-}
-#item-two .before-image {
-  background-image: url("images/face9.jpg");
-}
-#item-two .after-image {
-  background-image: url("images/face11.jpg");
-}
 #navLinks {
   text-align: center;
   width: 550px;
