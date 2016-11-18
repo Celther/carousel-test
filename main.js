@@ -3,63 +3,120 @@ let gallery = [
     heading: "Treatment",
     subheading: "After X Peels",
     beforeImage: {
-      url: "local/file.jpg",
+      url: "images/dos.jpg",
       issue: "acne"
     },
     afterImage: {
-      url: "local/file2.jpg",
+      url: "images/emma-stone.jpg",
       issue: "acne"
     }
   },
   {
-    heading: "Treatment 2"
+    heading: "Treatment 2",
+    subheading: "After Y Peels".
+    beforeImage: {
+      url: "images/face9.jpg",
+      issue: "acne"
+    },
+    afterImage: {
+      url: "images/face11.jpg",
+      issue: "psoriasis"
+    }
   }
 ];
 
-// function createSlides(array) {
-//   for (var i=0, i < array.length, i++) {
-//     const container = document.querySelector('.carousel');
-//     const `div-${i}` = document.createElement('div');
-//     const newDiv = container.appendChild(`div-${i}`)
-//     const heading = newDiv.appendChild('h2');
-//     const img1 = newDiv.appendChild('img');
-//     const img2 = newDiv.appendChild('img');
-//     if i === 0 {
-//       newDiv.className = `slide-${i} active`;
-//     } else {
-//       newDiv.className = `slide-${i}`;
-//     }
-//     img1.src = array[i].beforeImage.url || "";
-//     img2.src = array[i].afterImage.url || "";
-//   }
-// }
+// just querying the DOM...like a boss!
+var links = document.querySelectorAll(".itemLinks");
+var slides = document.querySelectorAll(".slide");
+var wrapper = document.querySelector("#slides-wrapper");
+var previousButton = document.querySelector(".previous");
+var nextButton = document.querySelector('.next');
 
-var navigation = (function() {
-  var carousel = document.querySelector('.carousel');
-  var slider = carousel.querySelector('.slider');
-  var previous = slider.querySelector('.previous');
-  var next = slider.querySelector('.next');
-  var slides = slider.querySelectorAll('.slides li');
-  var numSlides = slides.length;
-  var index = 0;
-  var currrent = slides[0];
-  function navigate(direction) {
-    current.classList.remove('active');
-    index = index + direction;
-    if (direction === -1 && index < 0) {
-      index = numSlides - 1;
-    }
-    if (direction === 1 && !slides[index]) {
-      index = 0;
-    }
-    current = slides[index];
-    current.classList.add('active');
+// the activeLink provides a pointer to the currently displayed item
+var activeLink = 0;
+
+// setup the event listeners
+for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    link.addEventListener('click', setClickedItem, false);
+
+    // identify the item for the activeLink
+    link.itemID = i;
+}
+previousButton.addEventListener('click', function(ev) {
+  navigate(-1);
+})
+nextButton.addEventListener('click', function(ev) {
+  navigate(1);
+})
+
+//Dynamically create the slides
+function createSlides(array) {
+  for (var i=0, i < array.length, i++) {
+    newSlide = document.createElement('div');
+    newCaptions = document.createElement('div');
+    newH2 = document.createElement('h2');
+    heading = document.createTextNode(array[i].heading);
+    newH3 = document.createElement('h3');
+    subheading = document.createTextNode(array[i].subheading);
+    beforeFigure = document.createElement('figure');
+    afterFigure = document.createElement('figure');
+    wrapper.appendChild(newSlide);
+    newSlide.setAttribute('id', ('item-' + (i + 1)));
+    newSlide.classList.add('slide');
+    newSlide.appendChild(newCaptions);
+    newCaptions.classList.add('captions');
+    newCaptions.appendChild(newH2);
+    newH2.appendChild(heading);
+    newCaptions.appendChild(newH3);
+    newH3.appendChild(subheading);
+    newSlide.appendChild(beforeFigure);
+    beforeFigure.classList.add('before-image');
+    beforeFigure.style.backgroundImage = "url(" + array[i].beforeImage.url + ")";
+    newSlide.appendChild(afterFigure);
+    afterFigure.style.backgroundImage = "url(" + array[i].afterImage.url + ")";
+    afterFigure.classList.add('after-image');
+    window[links] = document.querySelectorAll(".itemLinks");
   }
-  next.addEventListener('click', function(ev) {
-    navigate(1);
-  });
-  previous.addEventListener('click', function(ev) {
-    navigate(-1);
-  });
-  navigate(0);
-})();
+}
+
+// set first item as active
+links[activeLink].classList.add("active");
+
+function setClickedItem(e) {
+    removeActiveLinks();
+
+    var clickedLink = e.target;
+    activeLink = clickedLink.itemID;
+
+    changePosition(clickedLink, clickedLink.itemID);
+}
+
+function removeActiveLinks() {
+    for (var i = 0; i < links.length; i++) {
+        links[i].classList.remove("active");
+    }
+}
+
+// Handle changing the slider position as well as ensure
+// the correct link is highlighted as being active
+function changePosition(link, id) {
+    var pos = id * -1040;
+    var translateValue = "translate3d(" + pos + "px, 0px, 0)";
+    wrapper.style.transform = translateValue;
+
+    link.classList.add("active");
+}
+
+function navigate(direction) {
+  var numSlides = slides.length;
+  activeLink = activeLink + direction;
+  if (direction === -1 && activeLink < 0) {
+    activeLink = numSlides - 1;
+  }
+  if (direction === 1 && !slides[activeLink]) {
+    activeLink = 0;
+  }
+  removeActiveLinks();
+  changePosition(links[activeLink], activeLink);
+}

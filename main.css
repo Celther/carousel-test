@@ -1,40 +1,85 @@
-ol .slides {
-  list-style-type: none;
-  display: inline-block;
+#carousel-wrapper {
   position: relative;
-  text-align: center;
-  padding: 0;
-  width: 90%;
-  height: 550px;
-}
-.carousel {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  text-align: center;
-}
-.carousel li {
-  position: absolute;
-  display: inline-block;
-  top: 10000px;
-}
-li.active {
-  position: relative;
-  top: 0px;
-}
-figure {
-  overflow: hidden;
-  float: left;
-  display: inline-block;
-  margin: 10px;
-  width: auto;
-  max-width: 400px;
-  height: 400px;
 }
 .previous, .next {
-  position: relative;
-  width: 25px;
-  height: 50px;
+  position: absolute;
+  left: 0px;
+  width: 35px;
+  height: 30%;
   top: 50%;
-  z-index: 10;
+  z-index: 5;
 }
+.next {
+  left: 1055px;
+}
+#viewport {
+  width: 1040px;
+  border: 5px black solid;
+  overflow: hidden;
+  margin: 0 20px;
+}
+#slides-wrapper {
+  width: 3120px;
+  transform: translate3d(0, 0, 0);
+  transition: transform .5s ease-in-out;
+}
+#slides-wrapper figure {
+  width: 500px;
+  height: 350px;
+  float: left;
+  margin: 10px;
+}
+.slide {
+  float: left;
+  width: 1040px;
+  background: no-repeat;
+  white-space: normal;
+}
+.captions {
+  text-align: center;
+}
+#item-one .before-image {
+  background-image: url("images/emma-stone.jpg");
+}
+#item-one .after-image {
+  background-image: url("images/dos.jpg");
+}
+#item-two .before-image {
+  background-image: url("images/face9.jpg");
+}
+#item-two .after-image {
+  background-image: url("images/face11.jpg");
+}
+#navLinks {
+  text-align: center;
+  width: 550px;
+}
+#navLinks ul {
+    margin: 0px auto;
+    padding: 0px;
+    display: inline-block;
+    margin-top: 6px;
+}
+    #navLinks ul li {
+        float: left;
+        text-align: center;
+        margin: 10px;
+        list-style: none;
+        cursor: pointer;
+        background-color: #CCCCCC;
+        padding: 5px;
+        border-radius: 50%;
+        border: black 5px solid;
+    }
+        #navLinks ul li:hover {
+            background-color: #FFFF00;
+        }
+        #navLinks ul li.active {
+            background-color: #333333;
+            color: #FFFFFF;
+            outline-width: 7px;
+        }
+            #navLinks ul li.active:hover {
+                background-color: #484848;
+                color: #FFFFFF;
+            }
